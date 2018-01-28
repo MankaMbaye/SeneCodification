@@ -91,7 +91,12 @@ class BatimentController extends Controller
     {
         $batiment = Batiment::find($id);
 
-        return view('admin.batiments.show',compact('batiment'));
+        $contraintesexes= Contraintesexe::all();
+        $contraintes= Contrainte::all();
+        $contrainteformations= Contrainteformation::all();
+
+        return view('admin.batiments.show',compact('batiment'))->with('contraintesexes',$contraintesexes)->
+        with('contrainteformations',$contrainteformations)->with('contraintes',$contraintes);
     }
 
     /**

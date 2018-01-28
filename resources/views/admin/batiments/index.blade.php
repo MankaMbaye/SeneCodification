@@ -19,6 +19,8 @@
     <td>{{$batiment->contrainteniveau_id}} </td>
     <td>{{$batiment->contrainteformation_id}} </td>
     <td>{{$batiment->contraintesexe_id}} </td>
+
+
     <td> 
 
     	<a class="btn btn-info" href="{{ route('batiment.show',$batiment->id) }}">Show</a>

@@ -8,6 +8,8 @@ use App\Departement;
 use App\Http\Requests\EtudiantRequest;
 use App\Http\Controllers\EtudiantController;
 
+use App\Sexe;
+
 class EtudiantController extends Controller
 {
     /**
@@ -20,7 +22,8 @@ class EtudiantController extends Controller
         
         $etudiants= Etudiant::all();
         $departements= Departement::all();
-        return view('admin.etudiants.index',compact('etudiants'))->with('departements',$departements);
+        $sexes = Sexe::all();
+        return view('admin.etudiants.index',compact('etudiants'))->with('departements',$departements)->with('sexes',$sexes);
     }
 
     /**
@@ -31,7 +34,8 @@ class EtudiantController extends Controller
     public function create()
     {
          $departements=Departement::all();
-        return view('admin.etudiants.create')->with('departements',$departements);
+         $sexes = Sexe::all();
+        return view('admin.etudiants.create')->with('departements',$departements)->with('sexes',$sexes);
     }
 
     /**

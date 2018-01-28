@@ -60,7 +60,7 @@
 
                 <strong>Contrainte Formation:</strong>
 
-                {{ $batiment->contrainteformation_id }}
+                {{ $batiment->contrainteformation_valeur }}
 
             </div>
 
@@ -73,7 +73,7 @@
 
                 <strong>Contrainte Sexe:</strong>
 
-                {{ $batiment->contraintesexe_id }}
+                {{ $batiment->contraintesexe_valeur }}
 
             </div>
 
@@ -86,7 +86,7 @@
 
                 <strong>Contrainte Niveau:</strong>
 
-                {{ $batiment->contrainteniveau_id }}
+                {{ $batiment->contrainteniveau_valeur }}
 
             </div>
 

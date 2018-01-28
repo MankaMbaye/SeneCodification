@@ -34,7 +34,7 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="{{ url('/etudiant/create') }}">
             <i class="fa fa-fw fa-area-chart"></i>
             <span class="nav-link-text">Inscription</span>
           </a>

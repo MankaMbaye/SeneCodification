@@ -79,9 +79,9 @@
 
             <div class="form-group">
 
-                <strong>Prenom:</strong>
+                <strong>Telephone:</strong>
 
-                {!! Form::text('numtel', null, array('placeholder' => 'Telephone','class' => 'form-control')) !!}
+                {!! Form::text('numtel', null, array('placeholder' => 'xx-xxx-xx-xx','class' => 'form-control')) !!}
 
             </div>
 
@@ -114,18 +114,31 @@
         </div> 
 
 
-
         <div class="col-xs-12 col-sm-12 col-md-12">
 
             <div class="form-group">
 
-                <strong>Sexe:</strong>
+                <strong>Sexe </strong>
 
-                {!! Form::text('sexe', null, array('placeholder' => 'sexe','class' => 'form-control')) !!}
+                 
+                
+
+                       <select class="form-control m-bot15" name="sexe">
+                        @if($sexes->count() > 0)
+                          @foreach($sexes as $sexe)
+                          <option value="{{$sexe->id}}">{{$sexe->valeur}}</option>
+                         @endForeach
+                        @else
+                          No Record Found
+                        @endif   
+                    </select>
+            
 
             </div>
 
-        </div> 
+        </div>
+
+
 
         <div class="col-xs-12 col-sm-12 col-md-12">
 
@@ -155,7 +168,7 @@
                        <select class="form-control m-bot15" name="departement_id">
                         @if($departements->count() > 0)
                           @foreach($departements as $departement)
-                          <option value="{{$departement->id}}">{{$departement->id}}</option>
+                          <option value="{{$departement->id}}">{{$departement->nom}}</option>
                          @endForeach
                         @else
                           No Record Found
