@@ -16,8 +16,10 @@
             </div>
 
             <div class="pull-right">
-
-                <a class="btn btn-success" href="{{ route('position.create') }}"> Create New Position</a>
+               
+                <a class="btn btn-success" class="fa fa-plus" href="{{ route('position.create') }}"> 
+                Create New Position
+            </a>
 
             </div>
 
@@ -49,7 +51,11 @@
 
             <th>Numero Chambre </th>
 
-            <th>Action</th>
+            <th> Contrainte Niveau </th>
+        
+            <th> Contrainte Formation </th>
+
+            <th width="33%">Action</th>
 
         </tr>
 
@@ -59,11 +65,16 @@
 
         <td>{{ $position->numPosition }}</td>
 
-        <td>{{ $position->batiment_id }}</td>
+        <td>{{ $position->batiment_nom }}</td>
 
         <td>{{ $position->etage_id }}</td>
 
         <td>{{ $position->chambre_id }}</td>
+
+        <td>{{$position->contrainte_valeur}} </td>
+
+        <td>{{$position->contrainteformation_valeur}} </td>
+
 
         <td>
 

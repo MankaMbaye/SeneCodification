@@ -11,6 +11,8 @@
 Route::resource('etudiant','EtudiantController');
 Route::get('etudiant/{id}', 'EtudiantController@show');
 
+Route::get('student','EtudiantController@indexe');
+
 
 /**Route::get('/form', function () {
     return view('form');
@@ -64,6 +66,7 @@ Route::GET('admin-password/reset/{token}','Admin\ResetPasswordController@showRes
     Route::resource('/etage','EtageController');
     Route::resource('/chambre','ChambreController');
     Route::resource('/position','PositionController');
+    Route::resource('/couloir','CouloirController');
   });
 
 

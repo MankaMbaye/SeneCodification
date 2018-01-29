@@ -10,15 +10,15 @@
 <th> Contrainte Niveau </th>
 <th> Contrainte Formation </th>
 <th> Contrainte Sexe </th>
-<th> Actions </th>
+<th width="33%"> Actions </th>
 </tr>
 @foreach($batiments as $batiment)
  <tr>
     <td>{{$batiment->nom}} </td>
     <td>{{$batiment->datecreation}} </td>
-    <td>{{$batiment->contrainteniveau_id}} </td>
-    <td>{{$batiment->contrainteformation_id}} </td>
-    <td>{{$batiment->contraintesexe_id}} </td>
+    <td>{{$batiment->contrainte_valeur}} </td>
+    <td>{{$batiment->contrainteformation_valeur}} </td>
+    <td>{{$batiment->contraintesexe_valeur}} </td>
 
 
     <td> 

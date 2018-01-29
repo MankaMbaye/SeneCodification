@@ -80,6 +80,14 @@
                           <p>Gérer les positions</p>
                       </a>
                   </li>
+
+                  <li class="couloirs link">
+                      <a href="/couloirs">
+                          <i class="fa fa-users"></i>
+                          <p>Gérer les couloirs</p>
+                      </a>
+                  </li>
+
                   <li class="devis link">
                       <a href="/devis">
                           <i class="fa fa-pencil-square-o"></i>

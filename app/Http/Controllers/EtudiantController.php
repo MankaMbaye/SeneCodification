@@ -7,8 +7,9 @@ use App\Etudiant;
 use App\Departement;
 use App\Http\Requests\EtudiantRequest;
 use App\Http\Controllers\EtudiantController;
-
+use DB;
 use App\Sexe;
+use App\Niveau;
 
 class EtudiantController extends Controller
 {
@@ -17,13 +18,38 @@ class EtudiantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    public function indexe()
+    {
+
+       $datas = DB::table('etudiants')->get();
+       $where = DB::table('etudiants')->where('niveau','DIC1')->first(); 
+       $whereSexe= DB::table('etudiants')->where('sexe','1')->get();
+       $wheres= DB::table('etudiants')->where('id','1')->where('departement_id','1')->first();
+
+       $whereNiveau = DB::table('etudiants')
+                ->where('niveau', '=', 'DIC1')
+                ->get();
+
+       $max = DB::table('etudiants')->max('id');
+       $min = DB::table('etudiants')->min('id');
+
+       $whereDept= DB::table('etudiants')->where('departement_id',1)->get(
+       );
+       return view('student',compact('datas','where','whereSexe','max','min','whereDept','whereNiveau'));
+
+    }
+
+
     public function index()
     {
         
         $etudiants= Etudiant::all();
         $departements= Departement::all();
         $sexes = Sexe::all();
-        return view('admin.etudiants.index',compact('etudiants'))->with('departements',$departements)->with('sexes',$sexes);
+        $niveaus= Niveau::all();
+        return view('admin.etudiants.index',compact('etudiants'))->with('departements',$departements)->with('sexes',$sexes)->with('niveaus',$niveaus);
     }
 
     /**
@@ -35,7 +61,8 @@ class EtudiantController extends Controller
     {
          $departements=Departement::all();
          $sexes = Sexe::all();
-        return view('admin.etudiants.create')->with('departements',$departements)->with('sexes',$sexes);
+         $niveaus= Niveau::all();
+        return view('admin.etudiants.create')->with('departements',$departements)->with('sexes',$sexes)->with('niveaus',$niveaus);
     }
 
     /**
@@ -91,7 +118,9 @@ class EtudiantController extends Controller
 
         $etudiant = Etudiant::find($id);
 
-        return view('admin.etudiants.edit',compact('etudiant'))->with('departements',$departements);
+        $niveaus = Niveau::all();
+
+        return view('admin.etudiants.edit',compact('etudiant'))->with('departements',$departements)->with('niveaus',$niveaus);
     }
 
     /**
