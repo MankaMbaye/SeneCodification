@@ -11,7 +11,7 @@
 
             <div class="pull-left">
 
-                <h2>Etudiants CRUD</h2>
+                <h2>Espace Etudiant </h2>
 
             </div>
 
