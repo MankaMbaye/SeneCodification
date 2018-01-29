@@ -12,6 +12,8 @@ use App\Contraintesexe;
 use App\Contrainteformation;
 use App\Contrainte;
 
+use Illuminate\Support\Facades\DB;
+
 class BatimentController extends Controller
 {
     /**
@@ -22,13 +24,32 @@ class BatimentController extends Controller
     public function index()
     {
 
-        $batiments= Batiment::all();
-        $contraintesexes= Contraintesexe::all();
-        $contraintes= Contrainte::all();
-        $contrainteformations= Contrainteformation::all();
+        /**$batiments= Batiment::all();*/
+        /**$contraintesexes= Contraintesexe::all();*/
+        /**$contrainteformations= Contrainteformation::all();*/
+        /**$contraintes= Contrainte::all();
+*/
+
+
+
+       $batiments = DB::table('batiments')
+        ->leftjoin('contraintes', 'batiments.contrainteniveau_id', '=', 'contraintes.id')
+        ->leftjoin('contrainteformations', 'batiments.contrainteformation_id', '=', 'contrainteformations.id')
+        ->leftjoin('contraintesexes','batiments.contraintesexe_id','=','contraintesexes.id')
+        ->select('batiments.id', 'batiments.nom', 'contraintes.valeur as contrainte_valeur', 'contraintes.id as contrainteniveau_id','batiments.datecreation','contrainteformations.valeur as contrainteformation_valeur',
+            'contrainteformations.id as contrainteformation_id','contraintesexes.valeur as contraintesexe_valeur',
+            'contraintesexes.id as contraintesexe_id')->get();
+
+
+
+
+       
+
+         return view('admin.batiments.index', ['batiments' => $batiments]);
         
-        return view('admin.batiments.index',compact('batiments'))->with('contraintesexes',$contraintesexes)->with('contraintes',$contraintes)->with('contrainteformations',$contrainteformations);
-    }
+       /** return view('admin.batiments.index',compact('batiments'))->with('contraintesexes',$contraintesexes)->with('contraintes',$contraintes)->with('contrainteformations',$contrainteformations);
+    */
+   }
 
     /**
      * Show the form for creating a new resource.
@@ -89,14 +110,32 @@ class BatimentController extends Controller
      */
     public function show($id)
     {
+        
         $batiment = Batiment::find($id);
 
-        $contraintesexes= Contraintesexe::all();
-        $contraintes= Contrainte::all();
-        $contrainteformations= Contrainteformation::all();
+        
 
-        return view('admin.batiments.show',compact('batiment'))->with('contraintesexes',$contraintesexes)->
-        with('contrainteformations',$contrainteformations)->with('contraintes',$contraintes);
+        $where= DB::table('batiments')->where('id','$id')->get();
+       
+
+        return view('admin.batiments.show',compact('where','batiment'));
+
+        /**return view('admin.batiments.show',compact('batiment'))->with('contraintesexes',$contraintesexes)->
+        with('contrainteformations',$contrainteformations)->with('contraintes',$contraintes);*/
+
+        
+
+       
+
+
+
+
+
+
+
+
+
+
     }
 
     /**

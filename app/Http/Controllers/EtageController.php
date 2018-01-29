@@ -12,6 +12,7 @@ use App\Http\Controllers\EtageController;
 use App\Contraintesexe;
 use App\Contrainteformation;
 use App\Contrainte;
+use Illuminate\Support\Facades\DB;
 
 class EtageController extends Controller
 {
@@ -23,14 +24,34 @@ class EtageController extends Controller
     public function index()
     {
 
-        $etages= Etage::all();
-        $batiments= Batiment::all();
+    
+    /**$batiments= Batiment::all();
 
-        $contraintesexes= Contraintesexe::all();
+        /**$contraintesexes= Contraintesexe::all();
         $contraintes= Contrainte::all();
-        $contrainteformations= Contrainteformation::all();
+        $contrainteformations= Contrainteformation::all();*/
 
-        return view('admin.etages.index',compact('etages'))->with('batiments',$batiments)->with('contraintesexes',$contraintesexes)->with('contrainteformations',$contrainteformations)->with('contraintes',$contraintes);
+
+
+    $etages = DB::table('etages')
+        ->leftjoin('contraintes', 'etages.contrainteniveau_id', '=', 'contraintes.id')
+        ->leftjoin('contrainteformations', 'etages.contrainteformation_id', '=', 'contrainteformations.id')
+        ->leftjoin('contraintesexes','etages.contraintesexe_id','=','contraintesexes.id')
+        ->leftjoin('batiments','etages.batiment_id','=','batiments.id')
+        ->select('etages.id','etages.numeroEtage', 'etages.nbreChambres', 'contraintes.valeur as contrainte_valeur', 'contraintes.id as contrainteniveau_id','etages.nbrePlaceRestantes','contrainteformations.valeur as contrainteformation_valeur',
+            'contrainteformations.id as contrainteformation_id','batiments.id as batiment_id','batiments.nom as batiment_nom','contraintesexes.valeur as contraintesexe_valeur',
+            'contraintesexes.id as contraintesexe_id')->get();
+
+
+
+
+
+        
+         return view('admin.etages.index', ['etages' => $etages]);
+
+
+
+       /** return view('admin.etages.index',compact('etages'))->with('batiments',$batiments)->with('contraintesexes',$contraintesexes)->with('contrainteformations',$contrainteformations)->with('contraintes',$contraintes);*/
     }
 
     /**

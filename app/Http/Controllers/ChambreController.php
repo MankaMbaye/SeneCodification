@@ -21,6 +21,8 @@ use App\Contraintesexe;
 use App\Contrainteformation;
 use App\Contrainte;
 
+use Illuminate\Support\Facades\DB;
+
 
 
 
@@ -42,7 +44,8 @@ class ChambreController extends Controller
     public function index(Request $request)
 
     {
-
+       
+       /**
        
         $chambres= Chambre::all();
         $batiments= Batiment::all();
@@ -56,7 +59,25 @@ class ChambreController extends Controller
 
         return view('admin.chambres.index',compact('chambres'))->with('batiments',$batiments)->with('etages',$etages)
 
-        ->with('contrainteformations',$contrainteformations)->with('contraintes',$contraintes)->with('contraintesexes',$contraintesexes);
+        ->with('contrainteformations',$contrainteformations)->with('contraintes',$contraintes)->with('contraintesexes',$contraintesexes);*/
+
+        $chambres = DB::table('chambres')
+        ->leftjoin('contraintes', 'chambres.contrainteniveau_id', '=', 'contraintes.id')
+        ->leftjoin('contrainteformations', 'chambres.contrainteformation_id', '=', 'contrainteformations.id')
+        ->leftjoin('contraintesexes','chambres.contraintesexe_id','=','contraintesexes.id')
+        ->leftjoin('batiments','chambres.batiment_id','=','batiments.id')
+        ->leftjoin('etages','chambres.etage_id','=','etages.id')
+        ->select('chambres.id','chambres.numeroChambre','chambres.capacite', 'chambres.nbrePlaceRestantes', 'contraintes.valeur as contrainte_valeur', 'contraintes.id as contrainteniveau_id','contrainteformations.valeur as contrainteformation_valeur',
+            'contrainteformations.id as contrainteformation_id','batiments.id as batiment_id','batiments.nom as batiment_nom','contraintesexes.valeur as contraintesexe_valeur',
+            'contraintesexes.id as contraintesexe_id','etages.id as etage_id','etages.numeroEtage')->get();
+
+
+
+
+
+        
+         return view('admin.chambres.index', ['chambres' => $chambres]);
+
 
     }
 
@@ -81,6 +102,7 @@ class ChambreController extends Controller
         $contraintesexes= Contraintesexe::all();
         $contraintes= Contrainte::all();
         $contrainteformations= Contrainteformation::all();
+        
         return view('admin.chambres.create')->with('batiments',$batiments)->with('etages',$etages)->with('contraintes',$contraintes)->with('contrainteformations',$contrainteformations)->with('contraintesexes',$contraintesexes);
 
     }

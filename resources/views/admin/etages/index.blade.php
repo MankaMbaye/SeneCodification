@@ -47,7 +47,14 @@
 
             <th>Nombre de chambres</th>
 
-            <th>Action</th>
+         <th> Contrainte Niveau </th>
+        
+          <th> Contrainte Formation </th>
+
+          <th> Contrainte Sexe </th>
+
+
+            <th width="33%">Action</th>
 
         </tr>
 
@@ -57,9 +64,12 @@
 
         <td>{{ $etage->numeroEtage }}</td>
 
-        <td>{{ $etage->batiment_id }}</td>
+        <td>{{ $etage->batiment_nom }}</td>
 
         <td>{{ $etage->nbreChambres }}</td>
+        <td>{{$etage->contrainte_valeur}} </td>
+        <td>{{$etage->contrainteformation_valeur}} </td>
+       <td>{{$etage->contraintesexe_valeur}} </td>
 
         <td>
 

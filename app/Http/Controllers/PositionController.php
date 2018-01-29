@@ -23,6 +23,7 @@ use App\Contraintesexe;
 use App\Contrainteformation;
 use App\Contrainte;
 
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -44,7 +45,7 @@ class PositionController extends Controller
     public function index(Request $request)
 
     {
-
+        /**
         $contraintesexes= Contraintesexe::all();
         $contraintes= Contrainte::all();
         $contrainteformations= Contrainteformation::all();
@@ -56,7 +57,40 @@ class PositionController extends Controller
         $etages= Etage::all();
         $chambres=Chambre::all();
         return view('admin.positions.index',compact('positions'))->with('batiments',$batiments)->with('etages',$etages)->with('chambres',$chambres)->with('contrainteformations',$contrainteformations)->with('contraintes',
-            $contraintes)->with('contraintesexes',$contraintesexes);
+            $contraintes)->with('contraintesexes',$contraintesexes); */
+
+
+
+
+
+
+         $positions = DB::table('positions')
+
+        ->leftjoin('contraintes', 'positions.contrainteniveau_id', '=', 'contraintes.id')
+        ->leftjoin('contrainteformations', 'positions.contrainteformation_id', '=', 'contrainteformations.id')
+        ->leftjoin('batiments','positions.batiment_id','=','batiments.id')
+        ->leftjoin('etages','positions.etage_id','=','etages.id')
+        ->leftjoin('chambres','positions.chambre_id','=','chambres.id')
+        ->select('positions.id','positions.numPosition','positions.nbrePlaceRestantes', 'contraintes.valeur as contrainte_valeur', 'contraintes.id as contrainteniveau_id','contrainteformations.valeur as contrainteformation_valeur',
+            'contrainteformations.id as contrainteformation_id','batiments.id as batiment_id','batiments.nom as batiment_nom','etages.id as etage_id','chambres.id as chambre_id')->get();
+
+
+
+
+
+        
+         return view('admin.positions.index', ['positions' => $positions]);
+
+
+
+
+
+
+
+
+
+
+
 
     }
 

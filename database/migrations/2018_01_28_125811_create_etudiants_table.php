@@ -21,9 +21,11 @@ class CreateEtudiantsTable extends Migration
             $table->string('lieuDeNaissance');
             $table->string('numtel');
             $table->string('sexe');
+            $table->string('adresse');
             $table->string('numCarteEtudiant');
             $table->integer('departement_id')->unsigned();
             $table->foreign('departement_id')->references('id')->on('departements')->onDelete('cascade');
+            $table->string('niveau');
             $table->string('anneeDetude');
             $table->timestamps();
         });

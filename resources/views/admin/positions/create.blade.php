@@ -64,6 +64,19 @@
         </div>
 
 
+        <div class="col-xs-12 col-sm-12 col-md-12">
+
+            <div class="form-group">
+
+                <strong>Nombre de places restantes:</strong>
+
+                {!! Form::text('nbrePlaceRestantes', null, array('placeholder' => 'Nombre de places restantes','class' => 'form-control')) !!}
+
+            </div>
+
+        </div>
+
+
 
         <div class="col-xs-12 col-sm-12 col-md-12">
 
@@ -136,27 +149,7 @@
 
         </div>
 
-        
-        <div class="col-xs-12 col-sm-12 col-md-12">
-
-            <div class="form-group">
-
-                <strong>Contrainte Sexe:</strong>    
-
-                       <select class="form-control m-bot15" name="contraintesexe_id">
-                        @if($contraintesexes->count() > 0)
-                          @foreach($contraintesexes as $contraintesexe)
-                          <option value="{{$contraintesexe->id}}">{{$contraintesexe->valeur}}</option>
-                         @endForeach
-                        @else
-                          No Record Found
-                        @endif   
-                    </select>
-            
-
-            </div>
-
-        </div>
+     
 
         <div class="col-xs-12 col-sm-12 col-md-12">
 

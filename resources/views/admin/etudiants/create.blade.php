@@ -88,6 +88,19 @@
         </div>  
 
 
+           <div class="col-xs-12 col-sm-12 col-md-12">
+
+            <div class="form-group">
+
+                <strong>Adresse:</strong>
+
+                {!! Form::textarea('adresse', null, array('placeholder' => 'Adresse -xx -xxx -xxxxx','class' => 'form-control')) !!}
+
+            </div>
+
+        </div> 
+
+
 
         <div class="col-xs-12 col-sm-12 col-md-12">
 
@@ -112,6 +125,30 @@
             </div>
 
         </div> 
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+
+            <div class="form-group">
+
+                <strong>Niveau </strong>
+
+                 
+                
+
+                       <select class="form-control m-bot15" name="niveau">
+                        @if($niveaus->count() > 0)
+                          @foreach($niveaus as $niveau)
+                          <option value="{{$niveau->id}}">{{$niveau->valeur}}</option>
+                         @endForeach
+                        @else
+                          No Record Found
+                        @endif   
+                    </select>
+            
+
+            </div>
+
+        </div>
 
 
         <div class="col-xs-12 col-sm-12 col-md-12">
