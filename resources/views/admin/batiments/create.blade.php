@@ -10,7 +10,7 @@
 
             <div class="pull-left">
 
-                <h2>Create New Batiment</h2>
+                <h2>Ajouter un nouveau Batiment</h2>
 
             </div>
 
