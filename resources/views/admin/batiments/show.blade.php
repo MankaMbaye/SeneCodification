@@ -11,13 +11,13 @@
 
             <div class="pull-left">
 
-                <h2> Show Batiment</h2>
+                <h2> Afficher Batiment</h2>
 
             </div>
 
             <div class="pull-right">
 
-                <a class="btn btn-primary" href="{{ route('batiment.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('batiment.index') }}"> Retour</a>
 
             </div>
 

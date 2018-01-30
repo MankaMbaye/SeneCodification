@@ -11,13 +11,13 @@
 
             <div class="pull-left">
 
-                <h2>Chambres CRUD</h2>
+                <h2>Gestion des Chambres </h2>
 
             </div>
 
             <div class="pull-right">
 
-                <a class="btn btn-success" href="{{ route('chambre.create') }}"> Create New Chambre</a>
+                <a class="btn btn-success" href="{{ route('chambre.create') }}"> Ajouter une Chambre</a>
 
             </div>
 
@@ -76,9 +76,9 @@
 
         <td>
 
-            <a class="btn btn-info" href="{{ route('chambre.show',$chambre->id) }}">Show</a>
+            <a class="btn btn-info" href="{{ route('chambre.show',$chambre->id) }}">Afficher</a>
 
-            <a class="btn btn-primary" href="{{ route('chambre.edit',$chambre->id) }}">Edit</a>
+            <a class="btn btn-primary" href="{{ route('chambre.edit',$chambre->id) }}">Modifier</a>
 
             {!! Form::open(['method' => 'DELETE','route' => ['chambre.destroy', $chambre->id],'style'=>'display:inline']) !!}
 

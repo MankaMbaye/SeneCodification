@@ -17,7 +17,7 @@
 
             <div class="pull-right">
 
-                <a class="btn btn-success" href="{{ route('etudiant.create') }}"> Create New Etudiant</a>
+                <a class="btn btn-success" href="{{ route('etudiant.create') }}"> ajouter un nouveau Etudiant</a>
 
             </div>
 
