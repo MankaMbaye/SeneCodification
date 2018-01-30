@@ -101,9 +101,9 @@
                       </a>
                   </li>
                   <li class="facture link">
-                      <a href="#">
-                          <i class="fa fa-file-text-o"></i>
-                          <p>Facture</p>
+                      <a href="{{url('admin/opencodif')}}">
+                        <i class="fa fa-folder-open-o" aria-hidden="true"></i>
+                          <p>Gestion codification</p>
                       </a>
                   </li>
                   <li class="params link">

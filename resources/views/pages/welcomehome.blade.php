@@ -8,7 +8,7 @@
 <ul class="list-group">
   <li class="list-group-item d-flex justify-content-between align-items-center">
     Batiment A [Nombre de chambres restantes]
-    <span class="badge badge-primary badge-pill">14</span>
+    <span class="badge badge-primary badge-pill">{{ $chambres }}</span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-center">
      Batiment B [Nombre de chambres restantes]

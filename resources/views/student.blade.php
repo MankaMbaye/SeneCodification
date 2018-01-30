@@ -1,3 +1,9 @@
+@extends('layouts.index')
+
+ 
+
+@section('content')
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -176,7 +182,7 @@
 
  	<tbody>
  		
- 		@foreach($whereNiveau as $data)
+ 		@foreach($whare as $data)
                
         <td>{{ $data->nom }}</td>
 
@@ -325,4 +331,6 @@
 
 </body>
 </html>
+
+@endsection
 

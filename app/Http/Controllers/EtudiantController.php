@@ -22,7 +22,7 @@ class EtudiantController extends Controller
 
     public function indexe()
     {
-
+       $etudiant= Etudiant::find($id);
        $datas = DB::table('etudiants')->get();
        $where = DB::table('etudiants')->where('niveau','DIC1')->first(); 
        $whereSexe= DB::table('etudiants')->where('sexe','1')->get();
@@ -37,15 +37,28 @@ class EtudiantController extends Controller
 
        $whereDept= DB::table('etudiants')->where('departement_id',1)->get(
        );
-       return view('student',compact('datas','where','whereSexe','max','min','whereDept','whereNiveau'));
+
+
+       $whare = DB::table('etudiants')
+        ->select('etudiants.id','etudiants.prenom','etudiants.numtel')->where('id','$id')->get();
+
+
+       return view('student',compact('datas','where','whereSexe','max','min','whereDept','whare'));
 
     }
 
 
     public function index()
     {
+
+
+
+
+
+        $etudiants = DB::table('etudiants')
+        ->leftjoin('departements', 'etudiants.departement_id', '=', 'departements.id')
+        ->select('etudiants.id', 'etudiants.nom','etudiants.prenom','etudiants.numCarteEtudiant' ,'departements.nom as departement_nom', 'departements.id as departement_id')->get();
         
-        $etudiants= Etudiant::all();
         $departements= Departement::all();
         $sexes = Sexe::all();
         $niveaus= Niveau::all();
@@ -89,7 +102,8 @@ class EtudiantController extends Controller
 
         return redirect()->route('etudiant.index')
 
-                        ->with('success','Etudiant created successfully');
+                        ->with('success','Inscription prise en compte avec succes, Veuillez consulter votre nom
+                            sur la liste suivante');
 
     }
 
@@ -103,7 +117,10 @@ class EtudiantController extends Controller
     {
         $etudiant = Etudiant::find($id);
 
-        return view('admin.etudiants.show',compact('etudiant'));
+        $etuDepts= DB::table('etudiants')->join('departements','departements.id','=','etudiants.departement_id')->where('departement_id','1')->where('sexe','1')->where('etudiants.id',$id)->get();
+
+        return view('admin.etudiants.show',compact('etudiant'))->with('etuDepts',$etuDepts);
+
     }
 
     /**
@@ -170,5 +187,24 @@ class EtudiantController extends Controller
         return redirect()->route('etudiant.index')
 
                         ->with('success','Etudiant deleted successfully');
+    }
+
+
+    public function getEtudiant($id)
+    {
+
+        $etudiants = DB::table('etudiants')->get();
+
+        $etuDepts= DB::table('etudiants')->join('departements','departements.id','=','etudiants.departement_id')->where('departement_id','1')->where('sexe','1')->get();
+
+        return view('admin.etudiants.indexe',['etuDepts'=>$etuDepts]);
+    }
+
+    public function join()
+    {
+       
+
+        return view('join',compact('etuDepts'));
+
     }
 }

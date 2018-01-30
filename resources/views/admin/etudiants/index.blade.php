@@ -11,21 +11,19 @@
 
             <div class="pull-left">
 
-                <h2>Etudiants CRUD</h2>
+                <h2>Liste des etudiants qui se sont inscrits</h2>
+
+                <hr>
 
             </div>
 
-            <div class="pull-right">
-
-                <a class="btn btn-success" href="{{ route('etudiant.create') }}"> Create New Etudiant</a>
-
-            </div>
+           
 
         </div>
 
     </div>
 
-
+   <hr>
     @if ($message = Session::get('success'))
 
         <div class="alert alert-success">
@@ -45,9 +43,11 @@
 
             <th>Prenom </th>
 
-            <th>Departement</th>
+            <th>Numero Carte Etudiant</th>
 
-            <th>Action</th>
+            <th> Departement </th>
+
+            <th>Propositions</th>
 
         </tr>
 
@@ -59,20 +59,15 @@
 
         <td>{{ $etudiant->prenom}}</td>
 
-        <td>{{ $etudiant->departement_id }}</td>
+        <td>{{ $etudiant->numCarteEtudiant }}</td>
+
+        <td>    {{ $etudiant->departement_nom }}                       </td>
 
         <td>
 
-            <a class="btn btn-info" href="{{ route('etudiant.show',$etudiant->id) }}">Show</a>
+            <a class="btn btn-info" href="{{ route('etudiant.show',$etudiant->id) }}">Voir Propositions</a>
 
-            <a class="btn btn-primary" href="{{ route('etudiant.edit',$etudiant->id) }}">Edit</a>
-
-            {!! Form::open(['method' => 'DELETE','route' => ['etudiant.destroy', $etudiant->id],'style'=>'display:inline']) !!}
-
-            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-
-            {!! Form::close() !!}
-
+           
         </td>
 
     </tr>

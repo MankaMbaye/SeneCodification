@@ -6,7 +6,7 @@
 
 /**Route::resource('form','EtudiantController');*/
 
-
+Route::get('/join','EtudiantController@join');
 
 Route::resource('etudiant','EtudiantController');
 Route::get('etudiant/{id}', 'EtudiantController@show');
@@ -34,6 +34,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/getEtudiant','EtudiantController@getEtudiant');
 
 /**
 Route::GET('admin','AdminController@index')->name('admin.home');
@@ -67,6 +68,7 @@ Route::GET('admin-password/reset/{token}','Admin\ResetPasswordController@showRes
     Route::resource('/chambre','ChambreController');
     Route::resource('/position','PositionController');
     Route::resource('/couloir','CouloirController');
+    Route::resource('/opencodif','CodifController');
   });
 
 

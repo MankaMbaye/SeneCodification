@@ -11,7 +11,7 @@
 
             <div class="pull-left">
 
-                <h2> Show Etudiant</h2>
+                <h2> Propositions </h2>
 
             </div>
 
@@ -26,64 +26,39 @@
     </div>
 
 
-    <div class="row">
+    
 
 
-        <div class="col-xs-12 col-sm-12 col-md-12">
+    <table class="table table-bordered">
 
-            <div class="form-group">
+        <tr>
 
-                <strong>Nom:</strong>
+            <th>Nom </th>
 
-                {{ $etudiant->nom }}
+            <th>Prenom </th>
 
-            </div>
+            <th>Departement</th>
 
-        </div>
+         
 
+        </tr>
 
-         <div class="col-xs-12 col-sm-12 col-md-12">
+    @foreach ($etuDepts as $etuDept)
 
-            <div class="form-group">
+    <tr>
 
-                <strong>Prenom:</strong>
+        <td>{{ $etuDept->nom }}</td>
 
-                {{ $etudiant->prenom }}
+        <td>{{ $etuDept->prenom}}</td>
 
-            </div>
-
-        </div>
-
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-
-            <div class="form-group">
-
-                <strong>NumTEl:</strong>
-
-                {{ $etudiant->numtel }}
-
-            </div>
-
-        </div>
-
-         <div class="col-xs-12 col-sm-12 col-md-12">
-
-            <div class="form-group">
-
-                <strong>Sexe:</strong>
-
-                {{ $etudiant->sexe }}
-
-            </div>
-
-        </div>
+        <td>{{ $etuDept->adresse }}</td>
 
 
-      
+    </tr>
 
+    @endforeach
 
-    </div>
+    </table>
 
 
 @endsection

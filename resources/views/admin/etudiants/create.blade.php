@@ -48,6 +48,7 @@
 
     {!! Form::open(array('route' => 'etudiant.store','method'=>'POST')) !!}
 
+
     <div class="row">
 
 
@@ -236,7 +237,9 @@
 
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
 
-                <button type="submit" class="btn btn-primary">Voir Propositions</button>
+                <button type="submit" class="btn btn-primary">Voir propositions</button>
+
+
 
         </div>
 
@@ -244,6 +247,6 @@
     </div>
 
     {!! Form::close() !!}
-
+  
 
 @endsection
