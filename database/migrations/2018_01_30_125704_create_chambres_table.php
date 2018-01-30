@@ -14,6 +14,7 @@ class CreateChambresTable extends Migration
     public function up()
     {
         Schema::create('chambres', function (Blueprint $table) {
+            
             $table->increments('id');
             $table->integer('numeroChambre');
             $table->integer('capacite');
@@ -24,6 +25,9 @@ class CreateChambresTable extends Migration
             
             $table->integer('etage_id')->unsigned();
             $table->foreign('etage_id')->references('id')->on('etages')->onDelete('cascade');
+
+            $table->integer('couloir_id')->unsigned();
+            $table->foreign('couloir_id')->references('id')->on('couloirs')->onDelete('cascade');
            
 
             $table->integer('contrainteformation_id')->unsigned();

@@ -21,13 +21,15 @@ class EtudiantSeeder extends Seeder
         {
         	Etudiant::create([
              
-             'id' => '15'.$i,
-             'nom' => 'fall',
-             'prenom'=> 'cheikh',
+        
+             'nom' => 'Toure',
+             'prenom'=> 'Ousmane',
              'dateDeNaissance'=> '2018-01-03',
-             'lieuDeNaissance'=> 'Dakar',
+             'lieuDeNaissance'=> 'Yarakh',
+             'adresse'=>'Fann',
+             'niveau'=>'DUT2',
              'numtel'=> '77 787 25 14',
-             'numCarteEtudiant'=>'1 7855 4789 0254',
+             'numCarteEtudiant'=> $faker->numberBetween(1210 ,36957),
              'sexe'=>'Masculin',
              'departement_id'=>$faker->numberBetween(1,6),
              'anneeDetude'=>'2018',

@@ -1,5 +1,6 @@
 @extends('layouts.homelayout')
 
+ 
 
 @section('contenu')
 
@@ -10,13 +11,13 @@
 
             <div class="pull-left">
 
-                <h2>Create New Position</h2>
+                <h2>Modifier les informations d'un couloir</h2>
 
             </div>
 
             <div class="pull-right">
 
-                <a class="btn btn-primary" href="{{ route('position.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('couloir.index') }}"> Back</a>
 
             </div>
 
@@ -46,7 +47,7 @@
     @endif
 
 
-    {!! Form::open(array('route' => 'position.store','method'=>'POST')) !!}
+    {!! Form::model($couloir, ['method' => 'PATCH','route' => ['couloir.update', $couloir->id]]) !!}
 
     <div class="row">
 
@@ -55,42 +56,15 @@
 
             <div class="form-group">
 
-                <strong>Numero Position:</strong>
-
-                {!! Form::text('numPosition', null, array('placeholder' => 'Numero Position','class' => 'form-control')) !!}
-
-            </div>
-
-        </div>
-
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-
-            <div class="form-group">
-
-                <strong>Nombre de places restantes:</strong>
-
-                {!! Form::text('nbrePlaceRestantes', null, array('placeholder' => 'Nombre de places restantes','class' => 'form-control')) !!}
-
-            </div>
-
-        </div>
-
-
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-
-            <div class="form-group">
-
-                <strong>Nom Batiment:</strong>
+                <strong>Couloir: </strong>
 
                  
                 
 
-                       <select class="form-control m-bot15" name="batiment_id">
-                        @if($batiments->count() > 0)
-                          @foreach($batiments as $batiment)
-                          <option value="{{$batiment->id}}">{{$batiment->nom}}</option>
+                       <select class="form-control m-bot15" name="valeur">
+                        @if($valcouloirs->count() > 0)
+                          @foreach($valcouloirs as $valcouloir)
+                          <option value="{{$valcouloir->id}}">{{$valcouloir->valeur}}</option>
                          @endForeach
                         @else
                           No Record Found
@@ -101,6 +75,44 @@
             </div>
 
         </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+
+            <div class="form-group">
+
+                <strong>Nombre de chambres:</strong>
+
+                {!! Form::number('nbreChambres', null, array('placeholder' => 'Nombre chambres','class' => 'form-control')) !!}
+
+            </div>
+
+        </div>
+
+
+  
+       
+
+
+         <div class="col-xs-12 col-sm-12 col-md-12">
+
+            <div class="form-group">
+
+                <strong>Nom Batiment:</strong>
+
+                 <select class="form-control m-bot15" name="batiment_id">
+                        @if($batiments->count() > 0)
+                          @foreach($batiments as $batiment)
+                          <option value="{{$batiment->id}}">{{$batiment->nom}}</option>
+                         @endforeach
+                        @else
+                          No Record Found
+                        @endif   
+                </select>
+
+            </div>
+
+        </div>
+
 
         <div class="col-xs-12 col-sm-12 col-md-12">
 
@@ -126,52 +138,8 @@
 
         </div>
 
-        <div class="col-xs-12 col-sm-12 col-md-12">
 
-            <div class="form-group">
-
-                <strong>Couloir: </strong>
-
-                       <select class="form-control m-bot15" name="couloir_id">
-                        @if($valcouloirs->count() > 0)
-                          @foreach($valcouloirs as $valcouloir)
-                          <option value="{{$valcouloir->id}}">{{$valcouloir->valeur}}</option>
-                         @endForeach
-                        @else
-                          No Record Found
-                        @endif   
-                    </select>
-            
-
-            </div>
-
-        </div>
-
-
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-
-            <div class="form-group">
-
-                <strong>Numero Chambre:</strong>
-
-                    <select class="form-control m-bot15" name="chambre_id">
-                        @if($chambres->count() > 0)
-                          @foreach($chambres as $chambre)
-                          <option value="{{$chambre->id}}">{{$chambre->numeroChambre}}</option>
-                         @endForeach
-                        @else
-                          No Record Found
-                        @endif   
-                    </select>
-            
-
-            </div>
-
-        </div>
-
-     
-
+        
         <div class="col-xs-12 col-sm-12 col-md-12">
 
             <div class="form-group">
@@ -195,7 +163,6 @@
             </div>
 
         </div>
-
 
         <div class="col-xs-12 col-sm-12 col-md-12">
 
@@ -221,16 +188,12 @@
 
         </div>
 
-
-       
-       
-
-
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
 
                 <button type="submit" class="btn btn-primary">Submit</button>
 
         </div>
+
 
 
     </div>

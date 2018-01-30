@@ -10,13 +10,13 @@
 
             <div class="pull-left">
 
-                <h2>Create New Position</h2>
+                <h2>Creer un nouveau couloir</h2>
 
             </div>
 
             <div class="pull-right">
 
-                <a class="btn btn-primary" href="{{ route('position.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('couloir.index') }}"> Back</a>
 
             </div>
 
@@ -46,7 +46,7 @@
     @endif
 
 
-    {!! Form::open(array('route' => 'position.store','method'=>'POST')) !!}
+    {!! Form::open(array('route' => 'couloir.store','method'=>'POST')) !!}
 
     <div class="row">
 
@@ -55,22 +55,33 @@
 
             <div class="form-group">
 
-                <strong>Numero Position:</strong>
+                <strong>Couloir: </strong>
 
-                {!! Form::text('numPosition', null, array('placeholder' => 'Numero Position','class' => 'form-control')) !!}
+                 
+                
+
+                       <select class="form-control m-bot15" name="valeur">
+                        @if($valcouloirs->count() > 0)
+                          @foreach($valcouloirs as $valcouloir)
+                          <option value="{{$valcouloir->id}}">{{$valcouloir->valeur}}</option>
+                         @endForeach
+                        @else
+                          No Record Found
+                        @endif   
+                    </select>
+            
 
             </div>
 
         </div>
 
-
         <div class="col-xs-12 col-sm-12 col-md-12">
 
             <div class="form-group">
 
-                <strong>Nombre de places restantes:</strong>
+                <strong>Nombre de chambres:</strong>
 
-                {!! Form::text('nbrePlaceRestantes', null, array('placeholder' => 'Nombre de places restantes','class' => 'form-control')) !!}
+                {!! Form::number('nbreChambres', null, array('placeholder' => 'Nombre chambres','class' => 'form-control')) !!}
 
             </div>
 
@@ -126,51 +137,6 @@
 
         </div>
 
-        <div class="col-xs-12 col-sm-12 col-md-12">
-
-            <div class="form-group">
-
-                <strong>Couloir: </strong>
-
-                       <select class="form-control m-bot15" name="couloir_id">
-                        @if($valcouloirs->count() > 0)
-                          @foreach($valcouloirs as $valcouloir)
-                          <option value="{{$valcouloir->id}}">{{$valcouloir->valeur}}</option>
-                         @endForeach
-                        @else
-                          No Record Found
-                        @endif   
-                    </select>
-            
-
-            </div>
-
-        </div>
-
-
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-
-            <div class="form-group">
-
-                <strong>Numero Chambre:</strong>
-
-                    <select class="form-control m-bot15" name="chambre_id">
-                        @if($chambres->count() > 0)
-                          @foreach($chambres as $chambre)
-                          <option value="{{$chambre->id}}">{{$chambre->numeroChambre}}</option>
-                         @endForeach
-                        @else
-                          No Record Found
-                        @endif   
-                    </select>
-            
-
-            </div>
-
-        </div>
-
-     
 
         <div class="col-xs-12 col-sm-12 col-md-12">
 
@@ -195,7 +161,6 @@
             </div>
 
         </div>
-
 
         <div class="col-xs-12 col-sm-12 col-md-12">
 

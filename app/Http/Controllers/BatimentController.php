@@ -123,16 +123,6 @@ class BatimentController extends Controller
         /**return view('admin.batiments.show',compact('batiment'))->with('contraintesexes',$contraintesexes)->
         with('contrainteformations',$contrainteformations)->with('contraintes',$contraintes);*/
 
-        
-
-       
-
-
-
-
-
-
-
 
 
 

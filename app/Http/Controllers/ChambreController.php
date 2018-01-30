@@ -13,10 +13,12 @@ use App\Batiment;
 
 use App\Etage;
 
+use App\Couloir;
+
 use App\Http\Requests\ChambreRequest;
 
 use App\Http\Controllers\ChambreController;
-
+use App\Valcouloir;
 use App\Contraintesexe;
 use App\Contrainteformation;
 use App\Contrainte;
@@ -67,8 +69,9 @@ class ChambreController extends Controller
         ->leftjoin('contraintesexes','chambres.contraintesexe_id','=','contraintesexes.id')
         ->leftjoin('batiments','chambres.batiment_id','=','batiments.id')
         ->leftjoin('etages','chambres.etage_id','=','etages.id')
+        ->leftjoin('valcouloirs','chambres.couloir_id','=','valcouloirs.id')
         ->select('chambres.id','chambres.numeroChambre','chambres.capacite', 'chambres.nbrePlaceRestantes', 'contraintes.valeur as contrainte_valeur', 'contraintes.id as contrainteniveau_id','contrainteformations.valeur as contrainteformation_valeur',
-            'contrainteformations.id as contrainteformation_id','batiments.id as batiment_id','batiments.nom as batiment_nom','contraintesexes.valeur as contraintesexe_valeur',
+            'contrainteformations.id as contrainteformation_id','batiments.id as batiment_id','batiments.nom as batiment_nom','valcouloirs.id as valcouloir_id','valcouloirs.valeur as valcouloir_valeur','contraintesexes.valeur as contraintesexe_valeur',
             'contraintesexes.id as contraintesexe_id','etages.id as etage_id','etages.numeroEtage')->get();
 
 
@@ -98,12 +101,13 @@ class ChambreController extends Controller
 
         $batiments=Batiment::all();
         $etages= Etage::all();
-
+        $couloirs= Couloir::all();
+        $valcouloirs= Valcouloir::all();
         $contraintesexes= Contraintesexe::all();
         $contraintes= Contrainte::all();
         $contrainteformations= Contrainteformation::all();
         
-        return view('admin.chambres.create')->with('batiments',$batiments)->with('etages',$etages)->with('contraintes',$contraintes)->with('contrainteformations',$contrainteformations)->with('contraintesexes',$contraintesexes);
+        return view('admin.chambres.create')->with('batiments',$batiments)->with('etages',$etages)->with('couloirs',$couloirs)->with('contraintes',$contraintes)->with('contrainteformations',$contrainteformations)->with('contraintesexes',$contraintesexes)->with('valcouloirs',$valcouloirs);
 
     }
 
@@ -126,7 +130,7 @@ class ChambreController extends Controller
 
        $this->validate($request, [
 
-            'numeroChambre' => 'required',
+            'numeroChambre' => 'required|unique:chambres',
 
             'capacite' => 'required',
 
@@ -137,6 +141,8 @@ class ChambreController extends Controller
         
 
         ]);
+          
+
 
 
         Chambre::create($request->all());
@@ -199,12 +205,14 @@ class ChambreController extends Controller
 
         $chambre = Chambre::find($id);
 
+        $couloirs= Couloir::all();
+
         $contraintesexes= Contraintesexe::all();
         $contraintes= Contrainte::all();
         $contrainteformations= Contrainteformation::all();
 
         return view('admin.chambres.edit',compact('chambre'))->with('batiments',$batiments)->with('etages',$etages)
-        ->with('contrainteformations',$contrainteformations)->with('contraintes',$contraintes)->with('contraintesexes',$contraintesexes);
+        ->with('contrainteformations',$contrainteformations)->with('contraintes',$contraintes)->with('contraintesexes',$contraintesexes)->with('couloirs',$couloirs);
 
     }
 

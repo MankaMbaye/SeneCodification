@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDepartementsTable extends Migration
+class CreateValcouloirsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateDepartementsTable extends Migration
      */
     public function up()
     {
-        Schema::create('departements', function (Blueprint $table) {
+        Schema::create('valcouloirs', function (Blueprint $table) {
+            
             $table->increments('id');
-            $table->string('nom')->unique();
+            $table->string('valeur');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateDepartementsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('departements');
+        Schema::dropIfExists('valcouloirs');
     }
 }

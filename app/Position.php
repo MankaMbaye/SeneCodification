@@ -11,7 +11,7 @@ class Position extends Model
 {
 
 
-    public $fillable = ['numPosition','batiment_id','etage_id','chambre_id','nbrePlaceRestantes','contrainteniveau_id','contrainteformation_id'];
+    protected $fillable = ['numPosition','batiment_id','etage_id','chambre_id','nbrePlaceRestantes','contrainteniveau_id','couloir_id','contrainteformation_id'];
 
 
 }

@@ -11,7 +11,7 @@
 
             <div class="pull-left">
 
-                <h2>Etages CRUD</h2>
+                <h2>Gestion des etages</h2>
 
             </div>
 

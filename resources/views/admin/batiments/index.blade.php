@@ -1,9 +1,44 @@
 @extends('layouts.homelayout')
 
+ 
+
 @section('contenu')
 
-<div class="panel-body">
-<table class="table">
+
+    <div class="row">
+
+        <div class="col-lg-12 margin-tb">
+
+            <div class="pull-left">
+
+                <h2>Gestion des batiments</h2>
+
+            </div>
+
+            <div class="pull-right">
+
+                <a class="btn btn-success" href="{{ route('batiment.create') }}"> Create New Batiment</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    @if ($message = Session::get('success'))
+
+        <div class="alert alert-success">
+
+            <p>{{ $message }}</p>
+
+        </div>
+
+    @endif
+
+
+<table class="table table-bordered">
+
 <tr>
 <th> Nom </th>
 <th> Date de creation </th>
@@ -39,14 +74,10 @@
  </tr>
 
 @endforeach
-{{ link_to_route('batiment.create', 'Add new batiment',null,['class'=>'btn btn-primary']) }}
+
+
 
 </table>
  
-
-
-</div>
-
-
 
 @endsection

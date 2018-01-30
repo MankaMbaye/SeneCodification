@@ -13,6 +13,13 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
 
-        $this->call(EtudiantSeeder::class); 
+        DB::table('batiments')->insert([
+            'nom' => str_random(10),
+            'datecreation' => '2018-05-06',
+            'nbrePlaceRestantes' => str_random(10),
+            'contraintesexe_id' => str_random(10),
+            'contrainteformation_id' => str_random(10),
+            'contrainteniveau_id' => str_random(10),
+        ]);
     }
 }

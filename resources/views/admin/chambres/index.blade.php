@@ -11,7 +11,7 @@
 
             <div class="pull-left">
 
-                <h2>Chambres CRUD</h2>
+                <h2>Gestion des chambres</h2>
 
             </div>
 
@@ -48,7 +48,7 @@
             <th>Nom Batiment</th>
 
             <th>Numero Etage</th>
-
+           <th>    Couloir   </th>
             <th> Contrainte Niveau </th>
             <th> Contrainte Formation </th>
             <th> Contrainte Sexe </th>
@@ -69,7 +69,7 @@
         <td>{{ $chambre->batiment_nom }}</td>
 
         <td>{{ $chambre->etage_id }}</td>
-
+        <td>{{ $chambre->valcouloir_valeur }}</td>
         <td>{{$chambre->contrainte_valeur}} </td>
         <td>{{$chambre->contrainteformation_valeur}} </td>
         <td>{{$chambre->contraintesexe_valeur}} </td>

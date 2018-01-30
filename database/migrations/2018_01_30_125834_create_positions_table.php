@@ -24,8 +24,8 @@ class CreatePositionsTable extends Migration
             $table->integer('chambre_id')->unsigned();
             $table->foreign('chambre_id')->references('id')->on('chambres')->onDelete('cascade');
 
-
-
+            $table->integer('couloir_id')->unsigned();
+            $table->foreign('couloir_id')->references('id')->on('couloirs')->onDelete('cascade');
 
             $table->integer('contrainteformation_id')->unsigned();
             $table->foreign('contrainteformation_id')->references('id')->on('contrainteformations')->onDelete('cascade');

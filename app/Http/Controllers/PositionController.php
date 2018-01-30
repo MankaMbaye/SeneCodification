@@ -15,6 +15,10 @@ use App\Batiment;
 
 use App\Etage;
 
+use App\Couloir;
+
+use App\Valcouloir;
+
 use App\Http\Requests\PositionRequest;
 
 use App\Http\Controllers\PositionController;
@@ -64,14 +68,15 @@ class PositionController extends Controller
 
 
 
-         $positions = DB::table('positions')
+        $positions = DB::table('positions')
 
         ->leftjoin('contraintes', 'positions.contrainteniveau_id', '=', 'contraintes.id')
         ->leftjoin('contrainteformations', 'positions.contrainteformation_id', '=', 'contrainteformations.id')
         ->leftjoin('batiments','positions.batiment_id','=','batiments.id')
         ->leftjoin('etages','positions.etage_id','=','etages.id')
         ->leftjoin('chambres','positions.chambre_id','=','chambres.id')
-        ->select('positions.id','positions.numPosition','positions.nbrePlaceRestantes', 'contraintes.valeur as contrainte_valeur', 'contraintes.id as contrainteniveau_id','contrainteformations.valeur as contrainteformation_valeur',
+        ->leftjoin('valcouloirs','positions.couloir_id','=','valcouloirs.id')
+        ->select('positions.id','positions.numPosition','positions.nbrePlaceRestantes', 'contraintes.valeur as contrainte_valeur', 'contraintes.id as contrainteniveau_id','contrainteformations.valeur as contrainteformation_valeur','valcouloirs.valeur as valcouloir_valeur','valcouloirs.id as valcouloir_id',
             'contrainteformations.id as contrainteformation_id','batiments.id as batiment_id','batiments.nom as batiment_nom','etages.id as etage_id','chambres.id as chambre_id')->get();
 
 
@@ -112,12 +117,13 @@ class PositionController extends Controller
         $contraintesexes= Contraintesexe::all();
         $contraintes= Contrainte::all();
         $contrainteformations= Contrainteformation::all();
-
+        $couloirs = Couloir::all();
         $batiments=Batiment::all();
         $etages= Etage::all();
         $chambres=Chambre::all();
+        $valcouloirs= Valcouloir::all();
         return view('admin.positions.create')->with('batiments',$batiments)->with('etages',$etages)->with('chambres',$chambres)->with('contrainteformations',$contrainteformations)->with('contraintesexes',$contraintesexes)->
-        with('contraintes',$contraintes);
+        with('contraintes',$contraintes)->with('couloirs',$couloirs)->with('valcouloirs',$valcouloirs);
 
     }
 

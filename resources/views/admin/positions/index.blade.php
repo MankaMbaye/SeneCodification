@@ -11,14 +11,14 @@
 
             <div class="pull-left">
 
-                <h2>Positions CRUD</h2>
+                <h2>Gerer les positions</h2>
 
             </div>
 
             <div class="pull-right">
                
                 <a class="btn btn-success" class="fa fa-plus" href="{{ route('position.create') }}"> 
-                Create New Position
+                AJOUT POSITION
             </a>
 
             </div>
@@ -51,6 +51,8 @@
 
             <th>Numero Chambre </th>
 
+            <th>    Couloir   </th>
+
             <th> Contrainte Niveau </th>
         
             <th> Contrainte Formation </th>
@@ -70,6 +72,8 @@
         <td>{{ $position->etage_id }}</td>
 
         <td>{{ $position->chambre_id }}</td>
+
+         <td>{{ $position->valcouloir_valeur }}</td>
 
         <td>{{$position->contrainte_valeur}} </td>
 

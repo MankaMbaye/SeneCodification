@@ -15,7 +15,7 @@ class CreateEtagesTable extends Migration
     {
         Schema::create('etages', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('numeroEtage');
+            $table->integer('numeroEtage')->unique();
             $table->integer('nbreChambres');
 
             

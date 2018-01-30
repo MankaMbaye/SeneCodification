@@ -140,6 +140,31 @@
 
             <div class="form-group">
 
+                <strong>Couloir: </strong>
+
+                 
+                
+
+                       <select class="form-control m-bot15" name="couloir_id">
+                        @if($couloirs->count() > 0)
+                          @foreach($couloirs as $couloir)
+                          <option value="{{$couloir->id}}">{{$couloir->valeur}}</option>
+                         @endForeach
+                        @else
+                          No Record Found
+                        @endif   
+                    </select>
+            
+
+            </div>
+
+        </div>
+
+
+         <div class="col-xs-12 col-sm-12 col-md-12">
+
+            <div class="form-group">
+
                 <strong>Contrainte Sexe:</strong>
 
                  

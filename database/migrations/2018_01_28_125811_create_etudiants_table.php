@@ -22,7 +22,7 @@ class CreateEtudiantsTable extends Migration
             $table->string('numtel');
             $table->string('sexe');
             $table->string('adresse');
-            $table->string('numCarteEtudiant');
+            $table->string('numCarteEtudiant')->unique();
             $table->integer('departement_id')->unsigned();
             $table->foreign('departement_id')->references('id')->on('departements')->onDelete('cascade');
             $table->string('niveau');
