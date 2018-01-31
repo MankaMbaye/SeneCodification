@@ -90,13 +90,6 @@ class PositionController extends Controller
 
 
 
-
-
-
-
-
-
-
     }
 
 
@@ -184,13 +177,23 @@ class PositionController extends Controller
     public function show($id)
 
     {
-        $contraintesexes= Contraintesexe::all();
-        $contraintes= Contrainte::all();
-        $contrainteformations= Contrainteformation::all();
+       
 
-         $position = Position::find($id);
+        $position = Position::find($id);
 
-        return view('admin.positions.show',compact('position'))->with('contrainteformations',$contrainteformations)->with('contraintes',$contraintes)->with('contraintesexes',$contraintesexes);
+
+        $positionCompts = DB::table('positions')
+
+        ->leftjoin('contraintes', 'positions.contrainteniveau_id', '=', 'contraintes.id')
+        ->leftjoin('contrainteformations', 'positions.contrainteformation_id', '=', 'contrainteformations.id')
+        ->leftjoin('batiments','positions.batiment_id','=','batiments.id')
+        ->leftjoin('etages','positions.etage_id','=','etages.id')
+        ->leftjoin('chambres','positions.chambre_id','=','chambres.id')
+        ->leftjoin('valcouloirs','positions.couloir_id','=','valcouloirs.id')
+        ->select('positions.id','positions.numPosition','positions.nbrePlaceRestantes', 'contraintes.valeur as contrainte_valeur', 'contraintes.id as contrainteniveau_id','contrainteformations.valeur as contrainteformation_valeur','valcouloirs.valeur as valcouloir_valeur','valcouloirs.id as valcouloir_id',
+            'contrainteformations.id as contrainteformation_id','batiments.id as batiment_id','batiments.nom as batiment_nom','etages.id as etage_id','chambres.id as chambre_id')->where('positions.id',$id)->get();
+
+        return view('admin.positions.show',compact('position'))->with('positionCompts',$positionCompts);
 
     }
 

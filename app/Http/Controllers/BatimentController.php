@@ -109,16 +109,26 @@ class BatimentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
+    
     {
         
         $batiment = Batiment::find($id);
 
+        $batiCompts = DB::table('batiments')
+        ->leftjoin('contraintes', 'batiments.contrainteniveau_id', '=', 'contraintes.id')
+        ->leftjoin('contrainteformations', 'batiments.contrainteformation_id', '=', 'contrainteformations.id')
+        ->leftjoin('contraintesexes','batiments.contraintesexe_id','=','contraintesexes.id')
+        ->select('batiments.id', 'batiments.nom', 'contraintes.valeur as contrainte_valeur', 'contraintes.id as contrainteniveau_id','batiments.datecreation','contrainteformations.valeur as contrainteformation_valeur',
+            'contrainteformations.id as contrainteformation_id','contraintesexes.valeur as contraintesexe_valeur',
+            'contraintesexes.id as contraintesexe_id')->where('batiments.id',$id)->get();
+
+
         
 
-        $where= DB::table('batiments')->where('id','$id')->get();
+       /** $where= DB::table('batiCompts')->where('id','$id')->get();*/
        
 
-        return view('admin.batiments.show',compact('where','batiment'));
+        return view('admin.batiments.show',compact('where','batiment'))->with('batiCompts',$batiCompts);
 
         /**return view('admin.batiments.show',compact('batiment'))->with('contraintesexes',$contraintesexes)->
         with('contrainteformations',$contrainteformations)->with('contraintes',$contraintes);*/

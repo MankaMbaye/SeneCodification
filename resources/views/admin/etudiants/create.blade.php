@@ -10,13 +10,13 @@
 
             <div class="pull-left">
 
-                <h2>Create New Etudiant</h2>
+                <h2>Inscription Etudiant</h2>
 
             </div>
 
             <div class="pull-right">
 
-                <a class="btn btn-primary" href="{{ route('etudiant.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('etudiant.index') }}"> Retour </a>
 
             </div>
 

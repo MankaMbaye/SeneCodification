@@ -27,7 +27,8 @@
 
 
     <div class="row">
-
+        
+        @foreach($chambreCompts as $chambreCompt)
 
         <div class="col-xs-12 col-sm-12 col-md-12">
 
@@ -35,7 +36,7 @@
 
                 <strong>Numero Chambre:</strong>
 
-                {{ $chambre->numeroChambre }}
+                {{ $chambreCompt->numeroChambre }}
 
             </div>
 
@@ -48,7 +49,7 @@
 
                 <strong>Capacite:</strong>
 
-                {{ $chambre->capacite }}
+                {{ $chambreCompt->capacite }}
 
             </div>
 
@@ -63,7 +64,7 @@
                
                 <strong>Nom Batiment:</strong>
 
-                {{ $chambre->batiment_id }}
+                {{ $chambreCompt->batiment_nom }}
 
             </div>
 
@@ -80,7 +81,45 @@
 
                 <strong>Numero Etage:</strong>
 
-                {{ $chambre->etage_id }}
+                {{ $chambreCompt->etage_numeroEtage }}
+
+            </div>
+
+        </div>
+
+          <div class="col-xs-12 col-sm-12 col-md-12">
+
+            <div class="form-group">
+
+                <strong>Contrainte Formation:</strong>
+
+                {{$chambreCompt->contrainteformation_valeur}}
+
+            </div>
+
+        </div>
+
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+
+            <div class="form-group">
+
+                <strong>Contrainte Sexe:</strong>
+
+                {{$chambreCompt->contraintesexe_valeur}}
+
+            </div>
+
+        </div>
+
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+
+            <div class="form-group">
+
+                <strong>Contrainte Niveau:</strong>
+
+                {{$chambreCompt->contrainte_valeur}} 
 
             </div>
 
@@ -88,7 +127,7 @@
 
 
       
-
+@endforeach
 
     </div>
 

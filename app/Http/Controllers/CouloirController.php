@@ -124,9 +124,18 @@ class CouloirController extends Controller
      */
     public function show($id)
     {
-         $couloir = Couloir::find($id);
+        $couloir = Couloir::find($id);
 
-        return view('admin.couloirs.show',compact('couloir'));
+        $couloirCompts = DB::table('couloirs')
+        ->leftjoin('contraintes', 'couloirs.contrainteniveau_id', '=', 'contraintes.id')
+        ->leftjoin('contrainteformations', 'couloirs.contrainteformation_id', '=', 'contrainteformations.id')
+        ->leftjoin('batiments','couloirs.batiment_id','=','batiments.id')
+        ->leftjoin('etages','couloirs.etage_id','=','etages.id')
+        ->leftjoin('valcouloirs','couloirs.valeur','=','valcouloirs.id')
+        ->select('couloirs.id','couloirs.nbreChambres','couloirs.valeur as couloir_valeur', 'couloirs.id as couloir_id', 'contraintes.valeur as contrainte_valeur', 'contraintes.id as contrainteniveau_id','contrainteformations.valeur as contrainteformation_valeur','valcouloirs.valeur as valcouloir_valeur','valcouloirs.id as valcouloirs_id',
+            'contrainteformations.id as contrainteformation_id','batiments.id as batiment_id','batiments.nom as batiment_nom','etages.id as etage_id','etages.numeroEtage as etage_numeroEtage')->where('couloirs.id',$id)->get();
+
+        return view('admin.couloirs.show',compact('couloir'))->with('couloirCompts',$couloirCompts);
     }
 
     /**

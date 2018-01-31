@@ -5,6 +5,7 @@
 @section('contenu')
 
 
+
     <div class="row">
 
         <div class="col-lg-12 margin-tb">
@@ -28,14 +29,14 @@
 
     <div class="row">
 
-
+         @foreach($batiCompts as $batiCompt)
         <div class="col-xs-12 col-sm-12 col-md-12">
 
             <div class="form-group">
 
                 <strong>Nom:</strong>
 
-                {{ $batiment->nom }}
+                {{ $batiCompt->nom }}
 
             </div>
 
@@ -48,7 +49,7 @@
 
                 <strong>Date de creation:</strong>
 
-                {{ $batiment->datecreation }}
+                {{ $batiCompt->datecreation }}
 
             </div>
 
@@ -60,7 +61,7 @@
 
                 <strong>Contrainte Formation:</strong>
 
-                {{$batiment->contrainteformation_valeur}}
+                {{$batiCompt->contrainteformation_valeur}}
 
             </div>
 
@@ -73,7 +74,7 @@
 
                 <strong>Contrainte Sexe:</strong>
 
-                {{$batiment->contraintesexe_valeur}}
+                {{$batiCompt->contraintesexe_valeur}}
 
             </div>
 
@@ -86,12 +87,12 @@
 
                 <strong>Contrainte Niveau:</strong>
 
-                {{$batiment->contrainte_valeur}} 
+                {{$batiCompt->contrainte_valeur}} 
 
             </div>
 
         </div>
-
+@endforeach
 
     </div>
 

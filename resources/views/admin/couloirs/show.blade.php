@@ -11,13 +11,13 @@
 
             <div class="pull-left">
 
-                <h2> Affichage Position</h2>
+                <h2> Afficher couloir</h2>
 
             </div>
 
             <div class="pull-right">
 
-                <a class="btn btn-primary" href="{{ route('position.index') }}"> Retour </a>
+                <a class="btn btn-primary" href="{{ route('couloir.index') }}"> Retour</a>
 
             </div>
 
@@ -28,33 +28,52 @@
 
     <div class="row">
         
-        @foreach($positionCompts as $positionCompt)
+        @foreach($couloirCompts as $couloirCompt)
 
         <div class="col-xs-12 col-sm-12 col-md-12">
 
             <div class="form-group">
 
-                <strong>Numero Position:</strong>
+                <strong>Couloir:</strong>
 
-                {{ $positionCompt->numPosition }}
+                {{ $couloirCompt->valcouloir_valeur }}
 
             </div>
 
         </div>
 
 
+         <div class="col-xs-12 col-sm-12 col-md-12">
+
+            <div class="form-group">
+
+                <strong>Nombre de chambres:</strong>
+
+                {{ $couloirCompt->nbreChambres }}
+
+            </div>
+
+        </div>
+
 
         <div class="col-xs-12 col-sm-12 col-md-12">
 
             <div class="form-group">
 
+
+               
                 <strong>Nom Batiment:</strong>
 
-                {{ $positionCompt->batiment_nom }}
+                {{ $couloirCompt->batiment_nom }}
 
             </div>
 
         </div>
+
+
+
+
+
 
          <div class="col-xs-12 col-sm-12 col-md-12">
 
@@ -62,37 +81,24 @@
 
                 <strong>Numero Etage:</strong>
 
-                {{ $positionCompt->etage_id }}
+                {{ $couloirCompt->etage_numeroEtage }}
 
             </div>
 
         </div>
 
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-
-            <div class="form-group">
-
-                <strong>Numero Chambre:</strong>
-
-                {{ $positionCompt->chambre_id }}
-
-            </div>
-
-        </div>
-
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
+          <div class="col-xs-12 col-sm-12 col-md-12">
 
             <div class="form-group">
 
                 <strong>Contrainte Formation:</strong>
 
-                {{$positionCompt->contrainteformation_valeur}}
+                {{$couloirCompt->contrainteformation_valeur}}
 
             </div>
 
         </div>
+
 
 
 
@@ -102,12 +108,14 @@
 
                 <strong>Contrainte Niveau:</strong>
 
-                {{$positionCompt->contrainte_valeur}} 
+                {{$couloirCompt->contrainte_valeur}} 
 
             </div>
 
         </div>
 
+
+      
 @endforeach
 
     </div>

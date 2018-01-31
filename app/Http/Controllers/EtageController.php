@@ -112,7 +112,16 @@ class EtageController extends Controller
     {
         $etage = Etage::find($id);
 
-        return view('admin.etages.show',compact('etage'));
+        $etageCompts = DB::table('etages')
+        ->leftjoin('contraintes', 'etages.contrainteniveau_id', '=', 'contraintes.id')
+        ->leftjoin('contrainteformations', 'etages.contrainteformation_id', '=', 'contrainteformations.id')
+        ->leftjoin('contraintesexes','etages.contraintesexe_id','=','contraintesexes.id')
+        ->leftjoin('batiments','etages.batiment_id','=','batiments.id')
+        ->select('etages.id','etages.numeroEtage', 'etages.nbreChambres', 'contraintes.valeur as contrainte_valeur', 'contraintes.id as contrainteniveau_id','etages.nbrePlaceRestantes','contrainteformations.valeur as contrainteformation_valeur',
+            'contrainteformations.id as contrainteformation_id','batiments.id as batiment_id','batiments.nom as batiment_nom','contraintesexes.valeur as contraintesexe_valeur',
+            'contraintesexes.id as contraintesexe_id')->where('etages.id',$id)->get();
+
+        return view('admin.etages.show',compact('etage'))->with('etageCompts',$etageCompts);
     }
 
     /**

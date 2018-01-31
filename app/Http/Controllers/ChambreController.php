@@ -172,12 +172,19 @@ class ChambreController extends Controller
     {
 
         $chambre = Chambre::find($id);
-        $contraintesexes= Contraintesexe::all();
-        $contraintes= Contrainte::all();
-        $contrainteformations= Contrainteformation::all();
+        
+        $chambreCompts = DB::table('chambres')
+        ->leftjoin('contraintes', 'chambres.contrainteniveau_id', '=', 'contraintes.id')
+        ->leftjoin('contrainteformations', 'chambres.contrainteformation_id', '=', 'contrainteformations.id')
+        ->leftjoin('contraintesexes','chambres.contraintesexe_id','=','contraintesexes.id')
+        ->leftjoin('batiments','chambres.batiment_id','=','batiments.id')
+        ->leftjoin('etages','chambres.etage_id','=','etages.id')
+        ->leftjoin('valcouloirs','chambres.couloir_id','=','valcouloirs.id')
+        ->select('chambres.id','chambres.numeroChambre','chambres.capacite', 'chambres.nbrePlaceRestantes', 'contraintes.valeur as contrainte_valeur', 'contraintes.id as contrainteniveau_id','contrainteformations.valeur as contrainteformation_valeur',
+            'contrainteformations.id as contrainteformation_id','batiments.id as batiment_id','batiments.nom as batiment_nom','valcouloirs.id as valcouloir_id','valcouloirs.valeur as valcouloir_valeur','contraintesexes.valeur as contraintesexe_valeur',
+            'contraintesexes.id as contraintesexe_id','etages.id as etage_id','etages.numeroEtage as etage_numeroEtage')->where('chambres.id',$id)->get();
 
-        return view('admin.chambres.show',compact('chambre'))->with('contrainteformations',$contrainteformations)
-        ->with('contraintes',$contraintes)->with('contraintesexes',$contraintesexes);
+        return view('admin.chambres.show',compact('chambre'))->with('chambreCompts',$chambreCompts);
 
     }
 

@@ -78,9 +78,9 @@
 
         <td>
 
-          <!--  <a class="btn btn-info" href="{{ route('couloir.show',$couloir->id) }}">Show</a> -->
+          <a class="btn btn-info" href="{{ route('couloir.show',$couloir->id) }}">Show</a> 
 
-            <a class="btn btn-primary" href="{{ route('couloir.edit',$couloir->id) }}">Edit</a>
+         <a class="btn btn-primary" href="{{ route('couloir.edit',$couloir->id) }}">Edit</a>
 
             {!! Form::open(['method' => 'DELETE','route' => ['couloir.destroy', $couloir->id],'style'=>'display:inline']) !!}
 
