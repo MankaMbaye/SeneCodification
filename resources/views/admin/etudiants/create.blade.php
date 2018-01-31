@@ -10,7 +10,7 @@
 
             <div class="pull-left">
 
-                <h2>Ajouter un Etudiant</h2>
+                <h2> create new Etudiant</h2>
 
             </div>
 
