@@ -36,7 +36,7 @@
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link" href="{{ url('/etudiant/create') }}">
             <i class="fa fa-fw fa-area-chart"></i>
-            <span class="nav-link-text">Inscription</span>
+            <span class="nav-link-text">Poursuivre mon inscription</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
@@ -228,7 +228,7 @@
         <li class="breadcrumb-item">
           <a href="#">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active">My Dashboard</li>
+        <li class="breadcrumb-item active">Etudiant Dashboard</li>
       </ol>
       <!-- Icon Cards-->
       <div class="row">
@@ -250,9 +250,18 @@
           <!-- Example Notifications Card-->
           <div class="card mb-3">
             <div class="card-header">
-              <i class="fa fa-bell-o"></i> Feed Example</div>
+              <i class="fa fa-bell-o"></i> Date du jour </div>
+
+              <div id="afficherheure"></div>
             
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+            <div class="card-footer small text-muted">
+              <div id="afficherheure"></div>
+                  <script type="text/javascript">
+                  setInterval(function(){
+                      document.getElementById('afficherheure').innerHTML = new Date().toLocaleTimeString();
+                  }, 1000);
+                  </script>
+            </div>
           </div>
         </div>
       </div>

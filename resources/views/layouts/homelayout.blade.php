@@ -61,12 +61,7 @@
                           <p>Accueil</p>
                       </a>
                   </li>
-                  <li class="clients link">
-                      <a href="{{ url('admin/chambre')}}">
-                          <i class="fa fa-users"></i>
-                          <p>Gérer les chambres</p>
-                      </a>
-                  </li>
+                  
                   <li class="batiments link">
                       <a href="{{url('admin/batiment')}}">
                           <i class="fa fa-users"></i>
@@ -81,12 +76,6 @@
                       </a>
                   </li>
 
-                  <li class="positions link">
-                      <a href="{{url('admin/position')}}">
-                          <i class="fa fa-users"></i>
-                          <p>Gérer les positions</p>
-                      </a>
-                  </li>
 
                   <li class="positions link">
                       <a href="{{url('admin/couloir')}}">
@@ -94,15 +83,27 @@
                           <p>Gérer les couloirs</p>
                       </a>
                   </li>
-                  <li class="devis link">
-                      <a href="/devis">
-                          <i class="fa fa-pencil-square-o"></i>
-                          <p>Devis</p>
+
+
+
+                  <li class="clients link">
+                      <a href="{{ url('admin/chambre')}}">
+                          <i class="fa fa-users"></i>
+                          <p>Gérer les chambres</p>
                       </a>
                   </li>
+
+                  <li class="positions link">
+                      <a href="{{url('admin/position')}}">
+                          <i class="fa fa-users"></i>
+                          <p>Gérer les positions</p>
+                      </a>
+                  </li>
+
+                  
                   <li class="facture link">
                       <a href="{{url('admin/opencodif')}}">
-                        <i class="fa fa-folder-open-o" aria-hidden="true"></i>
+                        <i class="fa fa-calendar" aria-hidden="true"></i>
                           <p>Gestion codification</p>
                       </a>
                   </li>

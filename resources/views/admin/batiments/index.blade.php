@@ -17,7 +17,7 @@
 
             <div class="pull-right">
 
-                <a class="btn btn-success" href="{{ route('batiment.create') }}"> Create New Batiment</a>
+                <a class="btn btn-success" href="{{ route('batiment.create') }}"> Ajout Batiment</a>
 
             </div>
 

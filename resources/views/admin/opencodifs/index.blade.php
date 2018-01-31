@@ -70,7 +70,7 @@
 
             {!! Form::open(['method' => 'DELETE','route' => ['opencodif.destroy', $opencodif->id],'style'=>'display:inline']) !!}
 
-            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+            {!! Form::submit('Supprimer', ['class' => 'btn btn-danger']) !!}
 
             {!! Form::close() !!}
 

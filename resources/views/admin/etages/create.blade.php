@@ -10,13 +10,13 @@
 
             <div class="pull-left">
 
-                <h2>Create New Etage</h2>
+                <h2>Ajouter une nouvelle etage</h2>
 
             </div>
 
             <div class="pull-right">
 
-                <a class="btn btn-primary" href="{{ route('etage.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('etage.index') }}"> Retour </a>
 
             </div>
 
@@ -24,27 +24,15 @@
 
     </div>
 
-
-    @if (count($errors) > 0)
-
-        <div class="alert alert-danger">
-
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-
-            <ul>
-
-                @foreach ($errors->all() as $error)
-
-                    <li>{{ $error }}</li>
-
-                @endforeach
-
-            </ul>
-
-        </div>
-
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
     @endif
-
 
     {!! Form::open(array('route' => 'etage.store','method'=>'POST')) !!}
 

@@ -1,5 +1,18 @@
 <?php
 
+use Carbon\Carbon;
+
+Route::get('/test', function(){
+
+$now= Carbon::now();
+
+$currentYear=$now->year;
+$month=$now->month;
+
+dd($currentYear);
+
+});
+
 
 
 /**Route::get('/etudiant','EtudiantController@index');
@@ -30,7 +43,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::resource('/reservation','ReservationController');
 
+Route::resource('/codification','CodificationController');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

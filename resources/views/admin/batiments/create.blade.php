@@ -10,13 +10,13 @@
 
             <div class="pull-left">
 
-                <h2>Create New Batiment</h2>
+                <h2>Ajout Batiment</h2>
 
             </div>
 
             <div class="pull-right">
 
-                <a class="btn btn-primary" href="{{ route('batiment.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('batiment.index') }}"> Retour</a>
 
             </div>
 
@@ -24,25 +24,14 @@
 
     </div>
 
-
-    @if (count($errors) > 0)
-
-        <div class="alert alert-danger">
-
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-
-            <ul>
-
-                @foreach ($errors->all() as $error)
-
-                    <li>{{ $error }}</li>
-
-                @endforeach
-
-            </ul>
-
-        </div>
-
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
     @endif
 
 

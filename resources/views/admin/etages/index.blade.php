@@ -17,7 +17,7 @@
 
             <div class="pull-right">
 
-                <a class="btn btn-success" href="{{ route('etage.create') }}"> Create New Etage</a>
+                <a class="btn btn-success" href="{{ route('etage.create') }}"> Ajouter une nouvelle etage</a>
 
             </div>
 

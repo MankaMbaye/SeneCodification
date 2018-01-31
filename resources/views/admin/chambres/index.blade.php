@@ -17,7 +17,7 @@
 
             <div class="pull-right">
 
-                <a class="btn btn-success" href="{{ route('chambre.create') }}"> Create New Chambre</a>
+                <a class="btn btn-success" href="{{ route('chambre.create') }}"> Ajouter une nouvelle chambre</a>
 
             </div>
 

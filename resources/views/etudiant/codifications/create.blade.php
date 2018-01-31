@@ -1,7 +1,7 @@
-@extends('layouts.homelayout')
+@extends('layouts.index')
 
 
-@section('contenu')
+@section('content')
 
 
     <div class="row">
@@ -10,13 +10,13 @@
 
             <div class="pull-left">
 
-                <h2> Ajouter une nouvelle chambre</h2>
+                <h2>Faire une reservation</h2>
 
             </div>
 
             <div class="pull-right">
 
-                <a class="btn btn-primary" href="{{ route('chambre.index') }}"> Retour </a>
+                <a class="btn btn-primary" href="{{ route('reservation.index') }}"> Back</a>
 
             </div>
 
@@ -24,7 +24,7 @@
 
     </div>
 
-
+       
     @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -36,45 +36,12 @@
     @endif
 
 
-    {!! Form::open(array('route' => 'chambre.store','method'=>'POST')) !!}
+    {!! Form::open(array('route' => 'reservation.store','method'=>'POST')) !!}
 
     <div class="row">
 
 
-        <div class="col-xs-12 col-sm-12 col-md-12">
 
-            <div class="form-group">
-
-                <strong>Numero Chambre:</strong>
-
-                {!! Form::text('numeroChambre', null, array('placeholder' => 'Numero Chambre','class' => 'form-control')) !!}
-
-            </div>
-
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-
-            <div class="form-group">
-
-                <strong>Capacite:</strong>
-
-                {!! Form::text('capacite', null, array('placeholder' => 'Capacite','class' => 'form-control')) !!}
-
-            </div>
-
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-
-            <div class="form-group">
-
-                <strong>Nombre de places restantes</strong>
-                {!! Form::text('nbrePlaceRestantes', null, array('placeholder' => 'Nombre places restantes','class' => 'form-control')) !!}
-
-            </div>
-
-        </div>
 
 
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -125,20 +92,16 @@
 
         </div>
 
-
-         <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-xs-12 col-sm-12 col-md-12">
 
             <div class="form-group">
 
                 <strong>Couloir: </strong>
 
-                 
-                
-
                        <select class="form-control m-bot15" name="couloir_id">
-                        @if($couloirs->count() > 0)
-                          @foreach($couloirs as $couloir)
-                          <option value="{{$couloir->id}}">{{$couloir->valeur}}</option>
+                        @if($valcouloirs->count() > 0)
+                          @foreach($valcouloirs as $valcouloir)
+                          <option value="{{$valcouloir->id}}">{{$valcouloir->valeur}}</option>
                          @endForeach
                         @else
                           No Record Found
@@ -151,43 +114,17 @@
         </div>
 
 
-         <div class="col-xs-12 col-sm-12 col-md-12">
-
-            <div class="form-group">
-
-                <strong>Contrainte Sexe:</strong>
-
-                 
-                
-
-                       <select class="form-control m-bot15" name="contraintesexe_id">
-                        @if($contraintesexes->count() > 0)
-                          @foreach($contraintesexes as $contraintesexe)
-                          <option value="{{$contraintesexe->id}}">{{$contraintesexe->valeur}}</option>
-                         @endForeach
-                        @else
-                          No Record Found
-                        @endif   
-                    </select>
-            
-
-            </div>
-
-        </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12">
 
             <div class="form-group">
 
-                <strong>Contrainte Niveau:</strong>
+                <strong>Numero Chambre:</strong>
 
-                 
-                
-
-                       <select class="form-control m-bot15" name="contrainteniveau_id">
-                        @if($contraintes->count() > 0)
-                          @foreach($contraintes as $contrainte)
-                          <option value="{{$contrainte->id}}">{{$contrainte->valeur}}</option>
+                    <select class="form-control m-bot15" name="chambre_id">
+                        @if($chambres->count() > 0)
+                          @foreach($chambres as $chambre)
+                          <option value="{{$chambre->id}}">{{$chambre->numeroChambre}}</option>
                          @endForeach
                         @else
                           No Record Found
@@ -198,20 +135,19 @@
             </div>
 
         </div>
+
+
 
         <div class="col-xs-12 col-sm-12 col-md-12">
 
             <div class="form-group">
 
-                <strong>Contrainte Formations:</strong>
+                <strong>Numero Position:</strong>
 
-                 
-                
-
-                       <select class="form-control m-bot15" name="contrainteformation_id">
-                        @if($contrainteformations->count() > 0)
-                          @foreach($contrainteformations as $contrainteformation)
-                          <option value="{{$contrainteformation->id}}">{{$contrainteformation->valeur}}</option>
+                    <select class="form-control m-bot15" name="position_id">
+                        @if($positions->count() > 0)
+                          @foreach($positions as $position)
+                          <option value="{{$position->id}}">{{$position->numPosition}}</option>
                          @endForeach
                         @else
                           No Record Found
@@ -224,7 +160,18 @@
         </div>
 
 
-       
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+
+            <div class="form-group">
+
+                <strong>Numero carte etudiant:</strong>
+
+                {!! Form::text('etudiant_id', null, array('placeholder' => 'Numero carte etudiant','class' => 'form-control')) !!}
+
+            </div>
+
+        </div>
        
 
 

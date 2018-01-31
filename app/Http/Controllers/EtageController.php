@@ -83,7 +83,7 @@ class EtageController extends Controller
 
         $this->validate($request, [
 
-            'numeroEtage' => 'required',
+            'numeroEtage' => 'required|unique:etages',
 
             'batiment_id' => 'required',
 

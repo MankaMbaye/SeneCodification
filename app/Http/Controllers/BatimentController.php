@@ -81,7 +81,7 @@ class BatimentController extends Controller
 
         $this->validate($request, [
 
-            'nom' => 'required',
+            'nom' => 'required|unique:batiments',
 
             'datecreation' => 'required',
 

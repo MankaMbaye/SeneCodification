@@ -4,6 +4,9 @@
     <a class="navbar-brand" href="#"><i class="fa fa-home"></i> Accueil</a>
 @endsection
 @section('content')
+
+
+
    
 <ul class="list-group">
   <li class="list-group-item d-flex justify-content-between align-items-center">
